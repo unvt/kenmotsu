@@ -7,6 +7,7 @@ KML SuperOverlay generator
 - https://x.optgeo.org/kenmotsu/manifold (std, maxzoom=18)
 - https://x.optgeo.org/kenmotsu/manifold?maxzoom=17 (std, maxzoom=17)
 - https://x.optgeo.org/kenmotsu/manifold?template=https://maps.gsi.go.jp/xyz/pale/{z}/{x}/{y}.png (pale, maxzoom=18)
+- https://x.optgeo.org/kenmotsu/manifold?template=https://tile.openstreetmap.jp/{z}/{x}/{y}.png
 
 # social preview image source
 https://www.metmuseum.org/art/collection/search/4805

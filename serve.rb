@@ -37,10 +37,10 @@ def up(tile, dz)
   [tile[0] >> dz, tile[1] >> dz, tile[2] - dz]
 end
 
-def bboxToTile(bboxCoords)
-  min = pointToTile(bboxCoords[0], bboxCoords[1], MAXZOOM)
-  max = pointToTile(bboxCoords[2], bboxCoords[3], MAXZOOM)
-  0.upto(MAXZOOM) {|dz|
+def bboxToTile(bboxCoords, z)
+  min = pointToTile(bboxCoords[0], bboxCoords[1], z)
+  max = pointToTile(bboxCoords[2], bboxCoords[3], z)
+  0.upto(z) {|dz|
     min_ = up(min, dz)
     max_ = up(max, dz)
     print "min #{up(min, dz)}, max #{up(max, dz)}\n"
@@ -73,11 +73,18 @@ get '/kenmotsu/leaf' do
   # t=std&minzoom=8&maxzoom=16&ext=png&BBOX=138.5460879393046,35.29046093766914,138.7444408891545,35.39711339773409
   p params
   bbox = params['BBOX'].split(',').map{|v| v.to_f}
-  b = bboxToTile(bbox)
+  maxzoom = params['maxzoom'] ? params['maxzoom'].to_i : MAXZOOM
+  b = bboxToTile(bbox, maxzoom - DZ)
+  builder = Nokogiri::XML::Builder.new(:encoding => 'UTF-8') {|xml|
+    xml.kml('xmlns' => 'http://www.opengis.net/kml/2.2') {
+
   (2 ** DZ).times {|dy|
     (2 ** DZ).times {|dx|
       print [b[0] * 2 ** DZ + dx, b[1] * 2 ** DZ + dy, b[2] + DZ], "\n"
     }
   }
-  'yes'
+
+    }
+  }
+  print builder.to_xml
 end

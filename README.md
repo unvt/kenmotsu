@@ -33,3 +33,12 @@ sudo systemctl status unvt.kenmotsu
 sudo systemctl enable unvt.kenmotsu
 ```
 
+# special thanks
+- @mapbox/tilebelt
+- gdal2tiles of GDAL
+
+# about the name
+The name was chosen as a joking reference to keys - because KML originally was Keyhole Markup Langeuage. 
+
+Kenmotsu (監物) was the officials under the ritsuryo legal code system. Kenmotsu was under the direct command of Nakatsukasasho and was in charge of supervising the maintenance and dilivery operations of KEYS of warehouses of the government offices. See also: https://www.japanese-wiki-corpus.org/title/Kenmotsu%20(officials%20belonging%20to%20Nakatsukasasho).html
+
